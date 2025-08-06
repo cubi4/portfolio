@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Was geht in Hannover</h1>
+        <h1>Hello World Game</h1>
         </div>
     </>
   )
