@@ -5,6 +5,7 @@ import {
     CardTitle,
     CardContent,
     CardFooter,
+    CardDescription,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -42,7 +43,7 @@ export function PasswordGate({ children }: { children: React.ReactNode }) {
             sessionStorage.setItem("unlocked", "1");
             setUnlocked(true);
         } else {
-            setError("Falsches Passwort");
+            setError("Wrong password");
         }
         setBusy(false);
     }
@@ -53,21 +54,24 @@ export function PasswordGate({ children }: { children: React.ReactNode }) {
         <div className="min-h-screen flex items-center justify-center p-6">
             <Card className="w-full max-w-sm">
                 <CardHeader>
-                    <CardTitle>Bitte Logge dich ein</CardTitle>
+                    <CardTitle>Welcome to ...</CardTitle>
+                    <CardDescription>
+                        Login with your special password
+                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={onSubmit} className="space-y-4">
                         <div className="space-y-2">
-                                <Label htmlFor="pw">Passwort</Label>
-                                <Input
-                                        id="pw"
-                                        type="password"
-                                        value={pw}
-                                        onChange={(e) => setPw(e.target.value)}
-                                        autoComplete="current-password"
-                                        required
-                                        placeholder="Passwort"
-                                />
+                            <Label htmlFor="pw">Passwort</Label>
+                            <Input
+                                id="pw"
+                                type="password"
+                                value={pw}
+                                onChange={(e) => setPw(e.target.value)}
+                                autoComplete="current-password"
+                                required
+                                placeholder=""
+                            />
                         </div>
                         {error && (
                             <p className="text-sm text-red-600">{error}</p>
@@ -77,13 +81,14 @@ export function PasswordGate({ children }: { children: React.ReactNode }) {
                             type="submit"
                             disabled={busy}
                         >
-                            {busy ? "Bitte warten…" : "Entsperren"}
+                            {busy ? "Please wait…" : "Login"}
                         </Button>
                     </form>
                 </CardContent>
                 <CardFooter>
                     <p className="text-xs text-muted-foreground">
-                        Hinweis: Beachte die Groß- und Kleinschreibung.
+                        By clicking login, you agree to our Terms of Service and
+                        Privacy Policy.
                     </p>
                 </CardFooter>
             </Card>
